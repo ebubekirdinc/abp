@@ -231,7 +231,7 @@
     (function () {
         datatables.createAjax = function (serverMethod, inputAction) {
             return function (requestData, callback, settings) {
-                var input = inputAction ? inputAction() : {};
+                var input = inputAction ? inputAction(requestData, settings) : {};
 
                 //Paging
                 if (settings.oInit.paging) {
@@ -299,12 +299,19 @@
                     column.targets = i;
                 }
 
+                if (!column.render && column.dataFormat) {
+                    var render = datatables.defaultRenderers[column.dataFormat];
+                    if (render) {
+                        column.render = render;
+                    }
+                }
+
                 if (column.rowAction) {
                     customizeRowActionColumn(column);
                 }
             }
 
-            configuration.language = datatables.defaultConfigurations.language;
+            configuration.language = datatables.defaultConfigurations.language();
 
             if(configuration.dom){
                 configuration.dom += datatables.defaultConfigurations.dom;
@@ -330,18 +337,23 @@
         }
     };
 
+    var ISOStringToDateTimeLocaleString = function (format) {
+        return function(data) {
+            var date = luxon
+                .DateTime
+                .fromISO(data, {
+                    locale: abp.localization.currentCulture.name
+                });
+            return format ? date.toLocaleString(format) : date.toLocaleString();
+        };
+    };
+
     datatables.defaultRenderers['date'] = function (value) {
-        return luxon
-            .DateTime
-            .fromISO(value, { locale: abp.localization.currentCulture.name })
-            .toLocaleString();
+        return (ISOStringToDateTimeLocaleString())(value);
     };
 
     datatables.defaultRenderers['datetime'] = function (value) {
-        return luxon
-            .DateTime
-            .fromISO(value, { locale: abp.localization.currentCulture.name })
-            .toLocaleString(luxon.DateTime.DATETIME_SHORT);
+        return (ISOStringToDateTimeLocaleString(luxon.DateTime.DATETIME_SHORT))(value);
     };
 
     /************************************************************************
@@ -352,21 +364,23 @@
 
     datatables.defaultConfigurations.scrollX = true;
 
-    datatables.defaultConfigurations.language = {
-        info: localize("PagerInfo"),
-        infoFiltered: localize("PagerInfoFiltered"),
-        infoEmpty: localize("PagerInfoEmpty"),
-        search: localize("PagerSearch"),
-        processing: localize("ProcessingWithThreeDot"),
-        loadingRecords: localize("LoadingWithThreeDot"),
-        lengthMenu: localize("PagerShowMenuEntries"),
-        emptyTable: localize("NoDataAvailableInDatatable"),
-        paginate: {
-            first: localize("PagerFirst"),
-            last: localize("PagerLast"),
-            previous: localize("PagerPrevious"),
-            next: localize("PagerNext")
-        }
+    datatables.defaultConfigurations.language = function () {
+        return {
+            info: localize("PagerInfo"),
+            infoFiltered: localize("PagerInfoFiltered"),
+            infoEmpty: localize("PagerInfoEmpty"),
+            search: localize("PagerSearch"),
+            processing: localize("ProcessingWithThreeDot"),
+            loadingRecords: localize("LoadingWithThreeDot"),
+            lengthMenu: localize("PagerShowMenuEntries"),
+            emptyTable: localize("NoDataAvailableInDatatable"),
+            paginate: {
+                first: localize("PagerFirst"),
+                last: localize("PagerLast"),
+                previous: localize("PagerPrevious"),
+                next: localize("PagerNext")
+            }
+        };
     };
 
     datatables.defaultConfigurations.dom = '<"dataTable_filters"f>rt<"row dataTable_footer"<"col-auto"l><"col-auto"i><"col"p>>';

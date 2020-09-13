@@ -21,7 +21,7 @@ ABP的UOW系统是;
 
 UOW自动针对这些方法开始,除非**周围已经有一个(环境)**UOW在运行.示例;
 
-* 如果你调用一个[仓储]方法(Repositories.md),但还没有启动UOW,它将自动**启动一个新的事务UOW**,其中包括在仓储方法中完成的所有操作,如果仓储方法没有抛出任何异常,则**提交事务**. 仓储方法根本不知道UOW或事务. 它只在一个常规的数据库对象上工作(例如用于[EF Core](Entity-Framework-Core.md)的`DbContext`),而UOW由ABP框架处理.
+* 如果你调用一个[仓储](Repositories.md)方法,但还没有启动UOW,它将自动**启动一个新的事务UOW**,其中包括在仓储方法中完成的所有操作,如果仓储方法没有抛出任何异常,则**提交事务**. 仓储方法根本不知道UOW或事务. 它只在一个常规的数据库对象上工作(例如用于[EF Core](Entity-Framework-Core.md)的`DbContext`),而UOW由ABP框架处理.
 * 如果调用[应用服务](Application-Services.md)方法,则相同的UOW系统将按上述说明工作. 如果应用服务方法使用某些仓储,这些仓储**不会开始新的UOW**,而是**参与由ABP框架为应用程序服务方法启动的当前工作单元中**.
 * ASP.NET Core控制器操作也是如此. 如果操作以控制器action开始,**UOW范围是控制器action的方法主体**.
 
@@ -325,7 +325,7 @@ public async Task<int> CreateAsync(string name)
 
 如果你的目的只是在创建/更新/删除实体后保存更改,建议你使用 `autoSave` 选项,而不是手动使用 `CurrentUnitOfWork.SaveChangesAsync()`.
 
-> **Note-1**: 当工作单元结束而没有任何错误时,所有更改都会自动保存. 所以除非确实需要,否则不要调用 `SaveChangesAsync()`.
+> **Note-1**: 当工作单元结束而没有任何错误时,所有更改都会自动保存. 所以除非确实需要,否则不要调用 `SaveChangesAsync()` 和设置 `autoSave` 为 `true`.
 > 
 > **Note-2**: 如果你使用 `Guid` 作为主键,则无需插入时保存来获取生成的id,因为 `Guid` 主键是在应用程序中设置的,创建新实体后立即可用.
 
