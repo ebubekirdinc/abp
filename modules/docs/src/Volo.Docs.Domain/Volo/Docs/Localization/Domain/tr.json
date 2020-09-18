@@ -1,4 +1,4 @@
-﻿{
+{
   "culture": "tr",
   "texts": {
     "Documents": "Dökümanlar",
@@ -9,17 +9,30 @@
     "Edit": "Düzenle",
     "LastEditTime": "Son Düzenleme",
     "Delete": "Sil",
+    "ClearCache": "",
+    "ClearCacheConfirmationMessage": "",
+    "ReIndexAllProjects": "",
+    "ReIndexProject": "",
+    "ReIndexProjectConfirmationMessage": "",
+    "SuccessfullyReIndexProject": "",
+    "ReIndexAllProjectConfirmationMessage": "",
+    "SuccessfullyReIndexAllProject": "",
     "InThisDocument": "Bu dökümanda",
     "GoToTop": "En üste çık",
     "Projects": "Proje(ler)",
     "NoProjectWarning": "Hiç proje yok!",
     "DocumentNotFound": "Aradığınız döküman bulunamadı!",
+    "ProjectNotFound": "",
     "NavigationDocumentNotFound": "Bu döküman için menü bulunamadı!",
     "DocumentNotFoundInSelectedLanguage": "İstediğiniz dilde belge bulunamadı. Varsayılan dilde belge gösterilir.",
+    "FilterTopics": "",
+    "FullSearch": "",
+    "Volo.Docs.Domain:010001": "",
     "MultipleVersionDocumentInfo": "Bu dökümanın birden çok versiyonu bulunmaktadır. Sizin için en uygun olan seçenekleri seçiniz.",
     "New": "Yeni",
     "Upd": "Günc",
     "NewExplanation": "Son iki hafta içinde oluşturuldu.",
-    "UpdatedExplanation": "Son iki hafta içinde güncellendi."
+    "UpdatedExplanation": "Son iki hafta içinde güncellendi.",
+    "Volo.Docs.Domain:010002": ""
   }
 }

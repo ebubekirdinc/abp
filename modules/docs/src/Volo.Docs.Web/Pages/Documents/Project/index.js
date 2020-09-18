@@ -34,7 +34,8 @@
                 var filteredItems = $navigation.find("li > a").filter(function () {
                     return $(this).text().toUpperCase().indexOf(filterText.toUpperCase()) > -1;
                 });
-
+                console.log("filteredItems:");
+                console.log(filteredItems);
                 filteredItems.each(function () {
 
                     var $el = $(this);
@@ -44,6 +45,7 @@
                     var hasParent = true;
                     while (hasParent) {
                         if ($parent.attr("id") === navigationContainerId) {
+                            console.log('break:' + navigationContainerId);
                             break;
                         }
 

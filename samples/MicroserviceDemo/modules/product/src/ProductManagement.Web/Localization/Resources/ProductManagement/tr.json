@@ -1,0 +1,16 @@
+{
+  "culture": "tr",
+  "texts": {
+    "Menu:ProductManagement": "",
+    "Menu:Products": "",
+    "ProductManagement": "",
+    "CreateANewProduct": "",
+    "Products": "",
+    "StockCount": "",
+    "Code": "",
+    "Name": "",
+    "Price": "",
+    "ImageName": "",
+    "ProductDeletionWarningMessage": ""
+  }
+}

@@ -46,164 +46,165 @@
 {
     <div class="docs-page" data-spy="scroll" data-target="#docs-sticky-index">
         <div class="row justify-content-end">
-            <div class="col-md-3 docs-sidebar dark-sidebar">
-                <div class="docs-sidebar-wrapper">
+        <div class="col-md-3 docs-sidebar dark-sidebar">
+         
+            <div class="docs-sidebar-wrapper">
 
-                    <div class="docs-top">
-                        <nav class="navbar navbar-logo">
-                            @if (!Model.Project.Name.IsNullOrWhiteSpace())
-                            {
-                                <a class="navbar-brand w-100" href="@Model.CreateVersionLink(Model.LatestVersionInfo, Model.GetSpecificVersionOrLatest())">
-                                    <span id="ProjectName">@Model.Project.Name</span><br>
-                                    <strong class="display-block">
-                                        @L["Documents"]
-                                    </strong>
-                                </a>
-                            }
-
-                            @if (!Model.Document.Project.MainWebsiteUrl.IsNullOrWhiteSpace())
-                            {
-                                <a href="@Model.Document.Project.MainWebsiteUrl" class="go-back-site" id="GoToMainWebSite">
-                                    <i class="fa fa-chevron-left"></i>
-                                    @L["BackToWebsite"]
-                                </a>
-                            }
-
-                            <div class="for-mobile">
-                                <div class="navbar-dark">
-                                    <button type="button" class="open-dmenu navbar-toggler" aria-label="Close">
-                                        <span class="navbar-toggler-icon"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-
-                    <div class="docs-tree-list">
-
-                        @if (Model.ShowProjectsCombobox && Model.ProjectSelectItems.Count > 1)
+                <div class="docs-top">
+                    <nav class="navbar navbar-logo">
+                        @if (!Model.Project.Name.IsNullOrWhiteSpace())
                         {
-                            <div class="docs-version">
-                                <div class="version-select">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text">
-                                                <i class="fa fa-folder-open" aria-hidden="true" data-toggle="tooltip" title="@L["Project"]"></i>
-                                            </label>
-                                        </div>
-
-                                        <select asp-items="Model.ProjectSelectItems"
-                                                class="form-control"
-                                                onchange="window.location.pathname = this.value">
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            <a class="navbar-brand w-100" href="@Model.CreateVersionLink(Model.LatestVersionInfo, Model.GetSpecificVersionOrLatest())">
+                                <span id="ProjectName">@Model.Project.Name</span><br>
+                                <strong class="display-block">
+                                    @L["Documents"]
+                                </strong>
+                            </a>
                         }
 
-                        <div class="row">
-                            @if (Model.VersionSelectItems.Any())
-                            {
-                                <div class="col @(Model.LanguageSelectListItems.Count > 1?"pr-0":"")">
-                                    <div class="docs-version @(Model.LanguageSelectListItems.Count > 1?"pr-1":"")">
-                                        <div class="version-select">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <label class="input-group-text">
-                                                        <i class="fas fa-code-branch" aria-hidden="true" data-toggle="tooltip" title="@L["Version"]"></i>
-                                                    </label>
-                                                </div>
+                        @if (!Model.Document.Project.MainWebsiteUrl.IsNullOrWhiteSpace())
+                        {
+                            <a href="@Model.Document.Project.MainWebsiteUrl" class="go-back-site" id="GoToMainWebSite">
+                                <i class="fa fa-chevron-left"></i>
+                                @L["BackToWebsite"]
+                            </a>
+                        }
 
-                                                <select asp-items="Model.VersionSelectItems"
-                                                        class="form-control"
-                                                        onchange="if (this.value) { window.location.replace(this.value) }">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-
-                            @if (Model.LanguageSelectListItems.Count > 1)
-                            {
-                                <div class="col-5  @(Model.VersionSelectItems.Any()?"pl-0":"")">
-                                    <div class="docs-version docs-language @(Model.VersionSelectItems.Any()?"pl-1":"")">
-                                        <div class="version-select">
-                                            <div class="input-group">
-                                                @*<div class="input-group-prepend">
-                                                    <label class="input-group-text">
-                                                        <i class="fa fa-globe" aria-hidden="true" data-toggle="tooltip" title="@L["Language"]"></i>
-                                                    </label>
-                                                </div>*@
-                                                <select asp-items="Model.LanguageSelectListItems"
-                                                        class="form-control"
-                                                        onchange="window.location.replace(this.value)">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                        <div class="for-mobile">
+                            <div class="navbar-dark">
+                                <button type="button" class="open-dmenu navbar-toggler" aria-label="Close">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
                         </div>
+                    </nav>
+                </div>
 
+                <div class="docs-tree-list">
+
+                    @if (Model.ShowProjectsCombobox && Model.ProjectSelectItems.Count > 1)
+                    {
                         <div class="docs-version">
                             <div class="version-select">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text"><i class="fa fa-filter"></i></label>
+                                        <label class="input-group-text">
+                                            <i class="fa fa-folder-open" aria-hidden="true" data-toggle="tooltip" title="@L["Project"]"></i>
+                                        </label>
+                                    </div>
+
+                                    <select asp-items="Model.ProjectSelectItems"
+                                            class="form-control"
+                                            onchange="window.location.pathname = this.value">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row">
+                        @if (Model.VersionSelectItems.Any())
+                        {
+                            <div class="col @(Model.LanguageSelectListItems.Count > 1 ? "pr-0" : "")">
+                                <div class="docs-version @(Model.LanguageSelectListItems.Count > 1 ? "pr-1" : "")">
+                                    <div class="version-select">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text">
+                                                    <i class="fas fa-code-branch" aria-hidden="true" data-toggle="tooltip" title="@L["Version"]"></i>
+                                                </label>
+                                            </div>
+
+                                            <select asp-items="Model.VersionSelectItems"
+                                                    class="form-control"
+                                                    onchange="if (this.value) { window.location.replace(this.value) }">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (Model.LanguageSelectListItems.Count > 1)
+                        {
+                            <div class="col-5  @(Model.VersionSelectItems.Any() ? "pl-0" : "")">
+                                <div class="docs-version docs-language @(Model.VersionSelectItems.Any() ? "pl-1" : "")">
+                                    <div class="version-select">
+                                        <div class="input-group">
+                                            @*<div class="input-group-prepend">
+                                                    <label class="input-group-text">
+                                                        <i class="fa fa-globe" aria-hidden="true" data-toggle="tooltip" title="@L["Language"]"></i>
+                                                    </label>
+                                                </div>*@
+                                            <select asp-items="Model.LanguageSelectListItems"
+                                                    class="form-control"
+                                                    onchange="window.location.replace(this.value)">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="docs-version">
+                        <div class="version-select">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text"><i class="fa fa-filter"></i></label>
+                                </div>
+
+                                <input class="form-control"
+                                       id="filter"
+                                       type="search"
+                                       data-search-url="@Model."
+                                       placeholder="filtrele"
+                                       aria-label="Filter">
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (Model.FullSearchEnabled)
+                    {
+                        <div class="docs-version mt-2 mb-4">
+                            <div class="version-select">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text"><i class="fa fa-search"></i></label>
                                     </div>
 
                                     <input class="form-control"
-                                           id="filter"
+                                           id="fullsearch"
                                            type="search"
-                                           data-search-url="@Model."
-                                           placeholder="@L["FilterTopics"].Value"
+                                           data-fullsearch-url="/search/@Model.LanguageCode/@Model.ProjectName/@Model.Version/"
+                                           placeholder="@L["FullSearch"].Value"
                                            aria-label="Filter">
                                 </div>
                             </div>
                         </div>
+                    }
 
-                        @if (Model.FullSearchEnabled)
-                        {
-                            <div class="docs-version mt-2 mb-4">
-                                <div class="version-select">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text"><i class="fa fa-search"></i></label>
-                                        </div>
-
-                                        <input class="form-control"
-                                               id="fullsearch"
-                                               type="search"
-                                               data-fullsearch-url="/search/@Model.LanguageCode/@Model.ProjectName/@Model.Version/"
-                                               placeholder="@L["FullSearch"].Value"
-                                               aria-label="Filter">
-                                    </div>
-                                </div>
-                            </div>
-                        }
-
-                        @if (Model.Navigation == null || !Model.Navigation.HasChildItems)
-                        {
-                            <div class="text-muted p-3">
-                                <i class="fa fa-warning"></i> @L["NavigationDocumentNotFound"]
-                            </div>
-                        }
-                        else
-                        {
-                            <ul root-node="@Model.Navigation"
-                                version="@(Model.LatestVersionInfo == null || Model.LatestVersionInfo.IsSelected ? DocsAppConsts.Latest : Model.Version)"
-                                project-name="@Model.ProjectName"
-                                project-format="@Model.Project.Format"
-                                selected-document-name="@Model.DocumentNameWithExtension"
-                                language="@Model.LanguageCode"
-                                id="sidebar-scroll"
-                                class="nav nav-list"></ul>
-                        }
-                    </div>
-
+                    @if (Model.Navigation == null || !Model.Navigation.HasChildItems)
+                    {
+                        <div class="text-muted p-3">
+                            <i class="fa fa-warning"></i> @L["NavigationDocumentNotFound"]
+                        </div>
+                    }
+                    else
+                    {
+                        <ul root-node="@Model.Navigation"
+                            version="@(Model.LatestVersionInfo == null || Model.LatestVersionInfo.IsSelected ? DocsAppConsts.Latest : Model.Version)"
+                            project-name="@Model.ProjectName"
+                            project-format="@Model.Project.Format"
+                            selected-document-name="@Model.DocumentNameWithExtension"
+                            language="@Model.LanguageCode"
+                            id="sidebar-scroll"
+                            class="nav nav-list"></ul>
+                    }
                 </div>
+
             </div>
+        </div>
 
             @if (Model.Document != null)
             {
