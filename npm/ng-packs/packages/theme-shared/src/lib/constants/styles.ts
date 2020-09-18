@@ -32,6 +32,11 @@ export default `
   min-width: 215px;
 }
 
+.datatable-scroll {
+  margin-bottom: 5px !important;
+  width: unset !important;
+}
+
 .ui-table-scrollable-body::-webkit-scrollbar {
   height: 5px !important;
   width: 5px !important;
@@ -43,11 +48,6 @@ export default `
 
 .ui-table-scrollable-body::-webkit-scrollbar-thumb {
   background: #8a8686;
-}
-
-.bordered .datatable-body-row {
-  border-top: 1px solid #eee;
-  margin-top: -1px;
 }
 
 .abp-ellipsis-inline {

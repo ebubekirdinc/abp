@@ -6,7 +6,11 @@ Repositories, in practice, are used to perform database operations for domain ob
 
 ## Generic Repositories
 
-ABP can provide a **default generic repository** for each aggregate root or entity. You can [inject](Dependency-Injection.md) `IRepository<TEntity, TKey>` into your service and perform standard **CRUD** operations. Example usage:
+ABP can provide a **default generic repository** for each aggregate root or entity. You can [inject](Dependency-Injection.md) `IRepository<TEntity, TKey>` into your service and perform standard **CRUD** operations.
+
+> Database provider layer should be properly configured to be able to use the default generic repositories. It is **already done** if you've created your project using the startup templates. If not, refer to the database provider documents ([EF Core](Entity-Framework-Core.md) / [MongoDB](MongoDB.md)) to configure it.
+
+**Example usage of a default generic repository:**
 
 ````C#
 public class PersonAppService : ApplicationService
@@ -126,7 +130,7 @@ You can directly access the data access provider (`DbContext` in this case) to p
 
 `IRepository` inherits from `IQueryable`, that means you can **directly use LINQ extension methods** on it, as shown in the example of the "*Generic Repositories*" section above.
 
-**Example: Using the `Where(...)` &and the `ToList()` extension methods**
+**Example: Using the `Where(...)` and the `ToList()` extension methods**
 
 ````csharp
 var people = _personRepository
@@ -189,8 +193,6 @@ This method is suggested;
 * If you develop a **reusable [application module](Modules/Index.md)** and don't want to force to a specific database provider, which should be done as a [best practice](Best-Practices/Index.md).
 
 ### Option-3: IAsyncQueryableExecuter
-
-> Notice that this feature is available in the ABP Framework 3.0 and later. While it is also usable with older versions, it was providing a very limited set of methods.
 
 `IAsyncQueryableExecuter` is a service that is used to execute an `IQueryable<T>` object asynchronously **without depending on the actual database provider**.
 

@@ -72,7 +72,7 @@ export default `
     border: 1px solid #c8c8c8;
   }
 .abp-loading {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.05);
 }
 .modal-backdrop {
 background-color: rgba(0, 0, 0, 0.6);
@@ -133,5 +133,9 @@ background-color: rgba(0, 0, 0, 0.6);
 .ui-table .pagination-wrapper {
     background-color: #f4f4f4;
     border: 1px solid #c8c8c8;
+}
+.bordered .datatable-body-row {
+    border-top: 1px solid #eee;
+    margin-top: -1px;
 }
 `;

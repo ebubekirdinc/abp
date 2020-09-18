@@ -4,8 +4,7 @@
     "Hello <b>{0}</b>.": "Merhaba <b>{0}</b>.",
     "Car": "Araba",
     "CarPlural": "Araba",
-    "MaxLenghtErrorMessage": "",
-    "Universe": "Evren",
-    "FortyTwo": ""
+    "MaxLenghtErrorMessage": "Bu alanın uzunluğu maksimum '{0}' karakter olabilir",
+    "Universe": "Evren"
   }
 }

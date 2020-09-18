@@ -6,8 +6,8 @@
     "Volo.AbpIo.Commercial:010003": "Bu organizasyonda yetkili değilsiniz!",
     "OrganizationNotFoundMessage": "Organizasyon bulunamadı!",
     "DeveloperCount": "Yazılımcı sayısı",
-    "QuestionCount": "",
-    "Unlimited": "",
+    "QuestionCount": "Kalan / toplam sorular",
+    "Unlimited": "Sınırsız",
     "Owners": "Yetkili sayısı",
     "AddMember": "Üye ekle",
     "AddOwner": "Yetkili ekle",
@@ -28,8 +28,8 @@
     "MyOrganizations": "Organizasyonlarım",
     "ApiKey": "API anahtarı",
     "UserNameNotFound": "{0} kullanıcı adı ile bir kullanıcı yok",
-    "SuccessfullyAddedToNewsletter": "",
-    "MyProfile": "",
-    "EmailNotValid": ""
+    "SuccessfullyAddedToNewsletter": "Bültenimize abone olduğunuz için teşekkürler!",
+    "MyProfile": "Profilim",
+    "EmailNotValid": "Lütfen uygun bir e-posta adresi giriniz"
   }
 }
